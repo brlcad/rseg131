@@ -1,2 +1,2 @@
 # rseg131
-Repository for RSEG-231 / Fall II 2023
+Repository for RSEG-131 / Fall II 2023
