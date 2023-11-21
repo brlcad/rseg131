@@ -22,4 +22,4 @@ Feature: Temperature conversion
   Scenario: Temperature conversion with NaN
     Given I have a temperature of NaN in F
     When I convert the temperature
-    Then I should receive an invalid input error
+    Then I should receive an invalid value error

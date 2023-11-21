@@ -6,7 +6,7 @@ Feature: Distance conversion
   Scenario: Distance conversion with valid unit
     Given I have a distance of 100 in meters
     When I convert the distance
-    Then I should receive an invalid unit error
+    Then the result should be 328.084 in "ft"
 
   # Scenario: Distance conversion with invalid unit
   #   Given I have a distance of 100 in X

@@ -16,6 +16,16 @@ public class ConversionSteps {
   private double convertedValue;
   private Exception exception;
 
+  /////////////////////////////////////////////////
+  // Step definitions for temperature conversion //
+  /////////////////////////////////////////////////
+
+  @Given("I have a temperature of NaN in F")
+  public void i_have_a_temperature_of_na_n_in_f() {
+    this.value = Float.NaN;
+    this.unit = "F";
+  }
+
   @Given("I have a temperature of {double} in {string}")
   public void i_have_a_temperature_of_in(double temp, String unit) {
     this.value = temp;
@@ -41,13 +51,35 @@ public class ConversionSteps {
     assertNotNull(exception);
     assertTrue(exception instanceof IllegalArgumentException);
   }
+  @Then("I should receive an invalid value error")
+  public void i_should_receive_an_invalid_value_error() {
+    assertNotNull(exception);
+    assertTrue(exception instanceof IllegalArgumentException);
+  }
 
-  // Step definitions for distance conversion
+  //////////////////////////////////////////////
+  // Step definitions for distance conversion //
+  //////////////////////////////////////////////
+
   @Given("I have a distance of {double} in {string}")
   public void i_have_a_distance_of_in(double dist, String unit) {
     this.value = dist;
     this.unit = unit;
   }
+  @Given("I have a distance of {int} in meters")
+  public void i_have_a_distance_of_in_meters(Integer dist) {
+    this.value = dist;
+    this.unit = "m";
+  }
+  @When("I convert the distance")
+  public void i_convert_the_distance() {
+    try {
+      this.convertedValue = Conversions.convertDistance(value, unit);
+    } catch (Exception e) {
+      this.exception = e;
+    }
+  }
+
 }
 
 
