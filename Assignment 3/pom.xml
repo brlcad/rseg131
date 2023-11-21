@@ -83,6 +83,12 @@
                         <configurationParameters>
                             cucumber.junit-platform.naming-strategy=long
                         </configurationParameters>
+                        <includes>
+                          <include>**/*Test.java</include>
+                          <include>**/*Tests.java</include>
+                          <include>**/*Step.java</include>
+                          <include>**/*Steps.java</include>
+                        </includes>
                     </properties>
                 </configuration>
             </plugin>

@@ -1,9 +1,11 @@
 /**
  * Christopher Sean Morrison
- * RSEG131 Assignment 2
+ * RSEG131 Assignment 3
  *
  * This file contains a Conversions class for converting units.
  */
+
+package io.cucumber.converty;
 
 import java.util.HashMap;
 import java.util.Map;
