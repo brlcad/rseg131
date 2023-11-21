@@ -1,0 +1,65 @@
+Christopher Sean Morrison
+RSEG-131 Software Testing Techniques
+Assignment 1, October 2023
+====================================
+
+For this assignment, I have organized my functional feature testing of Google Calculator into four categories corresponding with User Interface (UI), Basic Arithmetic (BA), Scientific Functionality (SF), and Complex Expressions.
+
+For a rough estimate of testing scope and to help determine what testing approach would be most beneficial, I calculated approximate equivalence classes and boundary conditions for expression operations (e.g., "+" or "sin()") using the following:
+
+PosVsNeg * DegVsRad * BoundaryVals * MouseVsKeyVsQuery * Operations
+   2     *    2     *       5      *         3         *     30     =  1800 test cases
+
+That calculation is basically suggesting that (on average) we will want a test case exploring both positive and negative numbers, degrees and radians, at least 5 boundary values (e.g., max val, 0, min val, pi, and e), and expression input via mouse, keyboard, or query.  That number quickly explodes into many additional cases (millions) if we consider compound operations, ANS memory, RND inputs, and parenthetical groupings.
+
+That's also a simplification of possible boundary values as there are notable additional conditions implied by IEEE-754 (floating point), by the trigonometry functions, and unknown internal representation limits, all of which seemed to apply and vary per operation.  I did observe Google Calculator appears to align most boundary behavior with IEEE-754 for floating point (e.g., 1/0=Infinity), and that implies there may also be single- and double-precision limits and special values (e.g., +-Infinity) also worth testing. 
+
+Regardless, even with conservatively under-counted boundary values, the number of test cases is untenable to exhaustively explore given resourcing available (i.e., my time these past two weeks), timeline of the class, and additional course work requirements.  Such exhaustive testing could be facilitated by writing a program to automate the test itemization, but the alternative approach taken for this assignment was to manually ensure each class had good coverage by way of class equivalence coverage and spot-testing particular boundary conditions.  Additionally, compound/complex expression sequences were incorporated as a form of regression testing.
+
+In the end, I generated a testing corpus of 112 test cases.  Of those, 24 are basic functional (sanity checks), 16 are keyboard modality centric, 11 are negative, 5 are regressive, 3 are smoke, and the remaining 53 are positive functional cases.  Smoke testing and basic sanity testing were incorporated to ensure the calculator displays and responds to input.  There's also additional UI testing to ensure keyboard, mouse, and query inputs work; both positive and negative functional testing covers all buttons and operations available; and compound expression regression testing to cover more advanced sequencing constructs.  Significant boundary conditions were tested, particularly with operations known to result in Infinity or Undefined behavior (e.g., division by zero), but not exhaustively -- just enough to have a decent collection of negative boundary tests.  Boundary and negative cases were roughly prioritized based on severity, impact, and broad coverage.
+
+As for data values used, since this is the most undersampled coverage area, I strived to ensure there was a roughly even balance of small and large positive values, negative and positive values, small and large negative values, and radian and degree values.  Numerically, I tried to also ensure a relatively even distribution of all 0-9 digits in the expression values used.
+
+Tests are grouped into UI, basic arithmetic, scientific function, and complex expression cases.  Every button and input on the calculator is exercised multiple times.
+
+I did consider but did not itemize any cross-platform or cross-browser Calculator behavior in the test plan as such portability testing can be evaluated (whether manually or via automation) as needed in those respective runtime environments without change to the test plan.
+
+Besides minor reformatting, I kept the test plan as it was originally provided and is described in the section below.  Thank you for your time and attention in reviewing my efforts!
+
+------------------------------------
+
+For the System Test Plan:
+
+Test Case ID: An identifier for the test case.  This might be a sequence number or an identifier related to the component being tested, such as "DB-001" for the first case written for a database tier.
+
+Test Case Name: A short name or headline that describes the test case.
+
+Status:  Self-explanatory.
+
+Defects:  If the test failed, what defect(s) resulted.  This can be a brief description or perhaps a reference to a bug report.
+
+Tester:  The person who completed the test.
+
+Comments:  Anything else relevant to the test plan or its results.
+
+For each feature, add test cases to cover it, and add additional tabs for more features:
+
+
+For each feature:
+
+Test Case ID: 	An identifier for the test case.  It should match an entry in the System Test Plan.
+
+Test Case Name:	A short name or headline that describes the test case.  It should match its entry in the System Test Plan.
+
+Test Case Type:  The kind of test.  Depending on the reason for your plan, this would be "positive", "negative", "expected fail", or perhaps "smoke test", "regression test" or similar.
+
+Test Preconditions:  Describe the conditions which must be true before the test starts.  This might include presence of data, successful authentication, or anything else that has to be set up before you begin the test case.  If you are running the test case by hand, you would need to assure that the application under test meets the preconditions, or have automation that puts the application into this state.
+
+Brief Description:  Textual description of what the test does.
+
+Steps: The specific steps involved in running the test.
+
+Expected results:  Describe what constitutes passing the test.
+
+
+

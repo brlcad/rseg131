@@ -1,0 +1,35 @@
+For the System Test Plan:
+
+Test Case ID: An identifier for the test case.  This might be a sequence number or an identifier related to the component being tested, such as "DB-001" for the first case written for a database tier.
+
+Test Case Name: A short name or headline that describes the test case.
+
+Status:  Self-explanatory.
+
+Defects:  If the test failed, what defect(s) resulted.  This can be a brief description or perhaps a reference to a bug report.
+
+Tester:  The person who completed the test.
+
+Comments:  Anything else relevant to the test plan or its results.
+
+For each feature, add test cases to cover it, and add additional tabs for more features:
+
+
+For each feature:
+
+Test Case ID: 	An identifier for the test case.  It should match an entry in the System Test Plan.
+
+Test Case Name:	A short name or headline that describes the test case.  It should match its entry in the System Test Plan.
+
+Test Case Type:  The kind of test.  Depending on the reason for your plan, this would be "positive", "negative", "expected fail", or perhaps "smoke test", "regression test" or similar.
+
+Test Preconditions:  Describe the conditions which must be true before the test starts.  This might include presence of data, successful authentication, or anything else that has to be set up before you begin the test case.  If you are running the test case by hand, you would need to assure that the application under test meets the preconditions, or have automation that puts the application into this state.
+
+Brief Description:  Textual description of what the test does.
+
+Steps: The specific steps involved in running the test.
+
+Expected results:  Describe what constitutes passing the test.
+
+
+
