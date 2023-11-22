@@ -3,16 +3,16 @@ Feature: Temperature conversion
   As a user of the Conversions class
   I want to correctly convert temperatures
 
-  # Scenario Outline: Valid temperature conversion
-  #   Given I have a temperature of <temp> in <unit>
-  #   When I convert the temperature
-  #   Then the result should be <convertedTemp> in <convertedUnit>
+  Scenario Outline: Valid temperature conversion
+    Given I have a temperature of <temp> in <unit>
+    When I convert the temperature
+    Then the result should be <convertedTemp> in <convertedUnit>
 
-  #   Examples:
-  #     | temp | unit | convertedTemp | convertedUnit |
-  #     | 32   | F    | 0             | C             |
-  #     | 0    | C    | 32            | F             |
-  #     | -40  | F    | -40           | C             |
+    Examples:
+      | temp | unit | convertedTemp | convertedUnit |
+      | 32   | F    | 0             | C             |
+      | 0    | C    | 32            | F             |
+      | -40  | F    | -40           | C             |
 
   Scenario: Temperature conversion with invalid unit
     Given I have a temperature of 100 in "X"
