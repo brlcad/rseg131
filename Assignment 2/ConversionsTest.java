@@ -306,11 +306,11 @@ class ConversionsTest {
   }
 
   /**
-   * Test conversion of 32C
+   * Test conversion of 0C to F
    * Success if return value is within tolerance of expected value.
    */
   @Test
-  @DisplayName("Convert 32C to F - Edge Test")
+  @DisplayName("Convert 0C to F - Edge Test")
   void testCelsius0ToFahrenheit() {
     assertEquals(32.0, Conversions.convertTemperature(0.0, "C"), tolerance, "0C should be 32F.");
   }
