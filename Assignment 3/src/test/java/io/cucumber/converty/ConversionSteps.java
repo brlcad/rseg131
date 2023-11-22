@@ -22,12 +22,6 @@ public class ConversionSteps {
   // Step conditions for temperature conversion //
   ////////////////////////////////////////////////
 
-  @Given("I have a temperature of NaN in F")
-  public void i_have_a_temperature_of_na_n_in_f() {
-    this.value = Float.NaN;
-    this.unit = "F";
-  }
-
   @Given("I have a temperature of {double} in {string}")
   public void i_have_a_temperature_of_in(double temp, String unit) {
     this.value = temp;
@@ -38,6 +32,30 @@ public class ConversionSteps {
   public void i_have_a_temperature(double value, String unit) {
     this.value = value;
     this.unit = unit;
+  }
+
+  @Given("I have a temperature of NaN in F")
+  public void i_have_a_temperature_of_na_n_in_f() {
+    this.value = Float.NaN;
+    this.unit = "F";
+  }
+
+  @Given("I have a temperature of Inf in C")
+  public void i_have_a_temperature_of_inf_in_c() {
+    this.value = Double.POSITIVE_INFINITY;
+    this.unit = "C";
+  }
+
+  @Given("I have a really big temperature")
+  public void i_have_a_really_big_temperature() {
+    this.value = Double.MAX_VALUE;
+    this.unit = "C";
+  }
+
+  @Given("I have a really small temperature")
+  public void i_have_a_really_small_temperature() {
+    this.value = Double.MIN_VALUE;
+    this.unit = "F";
   }
 
   @When("I convert the temperature")
@@ -84,20 +102,21 @@ public class ConversionSteps {
     this.unit = "m";
   }
 
-  @Given("I have a really big value")
-  public void i_have_a_really_big_value() {
+  @Given("I have a really big distance")
+  public void i_have_a_really_big_distance() {
     this.value = Double.MAX_VALUE;
     this.unit = "mi";
   }
 
-  @Given("I have a really small value")
-  public void i_have_a_really_small_value() {
+  @Given("I have a really small distance")
+  public void i_have_a_really_small_distance() {
     this.value = Double.MIN_VALUE;
     this.unit = "in";
   }
 
   @When("I convert the distance")
   public void i_convert_the_distance() {
+    this.exception = null;
     try {
       // System.out.println("converting " + value + " from " + unit);
       this.convertedValue = Conversions.convertDistance(value, unit);
@@ -134,6 +153,19 @@ public class ConversionSteps {
   @Then("the result should be zero")
   public void the_result_should_be_zero() {
     assertEquals(0.0, convertedValue, 0.0);
+  }
+
+  @Then("the result should be same as converting zero")
+  public void the_result_should_be_same_as_converting_zero() {
+    double zeroConverted = 0.0;
+    this.exception = null;
+    try {
+      zeroConverted = Conversions.convertTemperature(0, "F");
+    } catch (Exception e) {
+      this.exception = e;
+    }
+
+    assertEquals(zeroConverted, convertedValue, 0.0);
   }
 
   @Then("I should receive an invalid unit error")

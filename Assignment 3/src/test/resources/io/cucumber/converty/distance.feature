@@ -30,6 +30,11 @@ Feature: Distance conversion
     When I convert the distance
     Then I should receive an invalid unit error
 
+  Scenario: Distance conversion with temperature unit
+    Given I have a distance of 1000 in F
+    When I convert the distance
+    Then I should receive an invalid unit error
+
   Scenario: Distance conversion with NaN
     Given I have a Distance of NaN in "ft"
     When I convert the distance
@@ -50,18 +55,18 @@ Feature: Distance conversion
     When I convert the distance
     Then the result should be precisely 0 in mi
 
-  Scenario: Make sure big values convert
-    Given I have a really big value
+  Scenario: Make sure really big values convert
+    Given I have a really big distance
     When I convert the distance
     Then I should not get an exception
 
   Scenario: Make sure really big values overflow
-    Given I have a really big value
+    Given I have a really big distance
     When I convert the distance
     Then the result should be infinite
 
   Scenario: Make sure really small values underflow
-    Given I have a really small value
+    Given I have a really small distance
     When I convert the distance
     Then the result should be zero
 
