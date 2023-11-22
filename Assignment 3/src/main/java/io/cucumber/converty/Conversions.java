@@ -54,6 +54,8 @@ public class Conversions {
     fromUnit = fromUnit.toLowerCase();
     toUnit = toUnit.toLowerCase();
 
+    // System.out.println("converting from " + fromUnit + " to " + toUnit);
+
     Double fromFactor = distances.get(fromUnit);
     Double toFactor = distances.get("m_" + toUnit);
 
@@ -71,19 +73,23 @@ public class Conversions {
     String from = unit.toLowerCase();
     String to = "m";
 
-    if (from == "mi") {
+    // System.out.println("converting distance " + dist + " from [" + from + "]");
+
+    if (from.equals("mi")) {
       to = "km";
-    } else if (from == "km") {
+    } else if (from.equals("km")) {
       to = "mi";
-    } else if (from == "ft") {
+    } else if (from.equals("ft")) {
       to = "m";
-    } else if (from == "m") {
+    } else if (from.equals("m")) {
       to = "ft";
-    } else if (from == "in") {
+    } else if (from.equals("in")) {
       to = "cm";
-    } else if (from == "cm") {
+    } else if (from.equals("cm")) {
       to = "in";
     }
+
+    // System.out.println("converting distance to " + to);
 
     return convertDistanceFromTo(dist, from, to);
   }
