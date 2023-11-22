@@ -33,7 +33,7 @@ public class ConversionSteps {
   }
 
   @Given("I have a temperature of {double} in {unit}")
-  public void i_have_value(double value, String unit) {
+  public void i_have_a_temperature(double value, String unit) {
     this.value = value;
     this.unit = unit;
   }
@@ -78,6 +78,12 @@ public class ConversionSteps {
     this.unit = unit;
   }
 
+  @Given("I have a distance of {double} in {unit}")
+  public void i_have_a_distance(double dist, String unit) {
+    this.value = dist;
+    this.unit = unit;
+  }
+
   @Given("I have a Distance of NaN in {string}")
   public void i_have_a_distance_of_na_n_in(String string) {
     this.value = Float.NaN;
@@ -93,6 +99,7 @@ public class ConversionSteps {
   @When("I convert the distance")
   public void i_convert_the_distance() {
     try {
+      System.out.println("converting " + value + " from " + unit);
       this.convertedValue = Conversions.convertDistance(value, unit);
     } catch (Exception e) {
       this.exception = e;
