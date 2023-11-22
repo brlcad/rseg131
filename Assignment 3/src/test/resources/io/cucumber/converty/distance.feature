@@ -8,12 +8,12 @@ Feature: Distance conversion
     When I convert the distance
     Then the result should be 328.084 in "ft"
 
-  # Scenario: Distance conversion with invalid unit
-  #   Given I have a distance of 100 in X
-  #   When I convert the distance
-  #   Then I should receive an invalid unit error
+  Scenario: Distance conversion with invalid unit
+    Given I have a distance of 100 in "X"
+    When I convert the distance
+    Then I should receive an invalid unit error
 
-  # Scenario: Distance conversion with NaN
-  #   Given I have a Distance of NaN in ft
-  #   When I convert the distance
-  #   Then I should receive an invalid input error
+  Scenario: Distance conversion with NaN
+    Given I have a Distance of NaN in "ft"
+    When I convert the distance
+    Then I should receive an invalid value error

@@ -66,11 +66,19 @@ public class ConversionSteps {
     this.value = dist;
     this.unit = unit;
   }
+
+  @Given("I have a Distance of NaN in {string}")
+  public void i_have_a_distance_of_na_n_in(String string) {
+    this.value = Float.NaN;
+    this.unit = string;
+  }
+
   @Given("I have a distance of {int} in meters")
   public void i_have_a_distance_of_in_meters(Integer dist) {
     this.value = dist;
     this.unit = "m";
   }
+
   @When("I convert the distance")
   public void i_convert_the_distance() {
     try {
