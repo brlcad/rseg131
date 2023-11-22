@@ -16,7 +16,14 @@ Feature: Distance conversion
     Examples:
       | dist     | unit | convertedDist | convertedUnit |
       | 1        | mi   | 1.60934       | km            |
-      | 0.621371 | km   | 1             | mi            |
+      | 1.0      | km   | 0.621371      | mi            |
+      | 1.0      | ft   | 0.3048        | m             |
+      | 1.0      | m    | 3.28084       | ft            |
+      | 1.0      | in   | 2.54          | cm            |
+      | 1.0      | cm   | 0.393701      | in            |
+      | -1.0     | km   | -0.621371     | mi            |
+      | 12345    | dm   | 1234.5        | m             |
+      | -12345   | yd   | -11288.268    | m             |
 
   Scenario: Distance conversion with invalid unit
     Given I have a distance of 100 in "X"

@@ -99,7 +99,7 @@ public class ConversionSteps {
   @When("I convert the distance")
   public void i_convert_the_distance() {
     try {
-      System.out.println("converting " + value + " from " + unit);
+      // System.out.println("converting " + value + " from " + unit);
       this.convertedValue = Conversions.convertDistance(value, unit);
     } catch (Exception e) {
       this.exception = e;
