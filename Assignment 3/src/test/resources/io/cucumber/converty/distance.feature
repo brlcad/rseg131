@@ -8,6 +8,16 @@ Feature: Distance conversion
     When I convert the distance
     Then the result should be 328.084 in "ft"
 
+  Scenario Outline: Valid distance conversion
+    Given I have a distance of <dist> in <unit>
+    When I convert the distance
+    Then the result should be <convertedDist> in <convertedUnit>
+
+    Examples:
+      | dist     | unit | convertedDist | convertedUnit |
+      | 1        | mi   | 1.60934       | km            |
+      | 0.621371 | km   | 1             | mi            |
+
   Scenario: Distance conversion with invalid unit
     Given I have a distance of 100 in "X"
     When I convert the distance
