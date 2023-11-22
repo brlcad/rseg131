@@ -34,6 +34,8 @@ me realize a couple test cases that had not been previously
 considered, namely using temperature units for distance conversion and
 vice versa.
 
-Please see the attached screenshots and/or video showing the
-Cucumber-based BDD testing in action.  Thanks!
+Please see the included Screen*.mov video or Screenshot*.png images
+showing the Cucumber-based BDD testing in action.
+
+Thanks!
 
