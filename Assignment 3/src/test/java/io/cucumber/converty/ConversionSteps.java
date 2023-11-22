@@ -32,6 +32,12 @@ public class ConversionSteps {
     this.unit = unit;
   }
 
+  @Given("I have a temperature of {double} in {unit}")
+  public void i_have_value(double value, String unit) {
+    this.value = value;
+    this.unit = unit;
+  }
+
   @When("I convert the temperature")
   public void i_convert_the_temperature() {
     try {
@@ -43,6 +49,11 @@ public class ConversionSteps {
 
   @Then("the result should be {double} in {string}")
   public void the_result_should_be_in(double expected, String expectedUnit) {
+    assertEquals(expected, convertedValue, 0.01);
+  }
+
+  @Then("the result should be {double} in {unit}")
+  public void the_result_should_be(double expected, String expectedUnit) {
     assertEquals(expected, convertedValue, 0.01);
   }
 
