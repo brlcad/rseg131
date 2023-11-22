@@ -26,7 +26,7 @@ Feature: Distance conversion
       | -12345   | yd   | -11288.268    | m             |
 
   Scenario: Distance conversion with invalid unit
-    Given I have a distance of 100 in "X"
+    Given I have a distance of 10 in "xyz"
     When I convert the distance
     Then I should receive an invalid unit error
 
@@ -34,3 +34,34 @@ Feature: Distance conversion
     Given I have a Distance of NaN in "ft"
     When I convert the distance
     Then I should receive an invalid value error
+
+  Scenario: Distance conversion with Inf
+    Given I have a Distance of Inf in cm
+    When I convert the distance
+    Then I should receive an invalid value error
+
+  Scenario: Precise conversion of zero km
+    Given I have a distance of 0 in km
+    When I convert the distance
+    Then the result should be precisely 0 in mi
+
+  Scenario: Precise conversion of zero mi
+    Given I have a distance of 0 in mi
+    When I convert the distance
+    Then the result should be precisely 0 in mi
+
+  Scenario: Make sure big values convert
+    Given I have a really big value
+    When I convert the distance
+    Then I should not get an exception
+
+  Scenario: Make sure really big values overflow
+    Given I have a really big value
+    When I convert the distance
+    Then the result should be infinite
+
+  Scenario: Make sure really small values underflow
+    Given I have a really small value
+    When I convert the distance
+    Then the result should be zero
+
